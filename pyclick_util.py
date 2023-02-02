@@ -1,8 +1,3 @@
-# 这是一个示例 Python 脚本。
-
-# 按 Shift+F10 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
-
 import time
 import pyautogui
 import pyperclip
@@ -28,15 +23,15 @@ def keyup(): #弹起
 def hotkey(*key):#热键 如ctrl+v _ hotkey("ctrl","v")
     pyautogui.hotkey(*key)
 
-# 按间距中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    click_l()
+def move(x, y):
+    pyautogui.moveTo(x, y)
+    time.sleep(0.1)
 
-    for i in [1, 2, 3, 4, 5]:
-        pyperclip.copy(i)
-        # pyperclip.paste()
-        hotkey("ctrl", "v")
-        keydown()
-        keyup()
+def move_pos(pos):
+    pyautogui.moveTo(pos[0], pos[1])
+    time.sleep(0.1)
 
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+def click_l_pos(pos, t=0.1):
+    move_pos(pos)
+    pyautogui.click(pos[0], pos[1], button="left")
+    time.sleep(t)
